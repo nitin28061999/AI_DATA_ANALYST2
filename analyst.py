@@ -1,55 +1,51 @@
-# analyst.py
-
 from __future__ import annotations
-from dotenv import load_dotenv
 
-load_dotenv()  # Loads environment variables from .env
 import contextlib
 import json
 import os
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
-
-# Access variable
-api_key = os.getenv("API_KEY")
 import re
 from typing import Any, Dict, List, Optional, Union
 
+from dotenv import find_dotenv, load_dotenv
 import pandas as pd
 from pydantic import BaseModel, Field
 
+# Automatically locate and load the environment variables from .env
+load_dotenv(find_dotenv())
+
+# Retrieve Gemini API Key
+api_key = os.getenv("GEMINI_API_KEY")
+
 from analysis_tools import (
     apply_filters,
-    calculate_sum,
     calculate_average,
     calculate_count,
-    calculate_unique_count,
-    calculate_min,
     calculate_max,
-    group_and_sum,
-    group_and_average,
-    group_and_count,
-    top_n,
-    percentage_of_total,
-    monthly_sum,
-    value_counts,
-    filtered_sum,
+    calculate_min,
+    calculate_sum,
+    calculate_unique_count,
     filtered_average,
     filtered_count,
-    filtered_unique_count,
-    filtered_min,
-    filtered_max,
-    filtered_group_and_sum,
     filtered_group_and_average,
-    filtered_value_counts,
+    filtered_group_and_sum,
+    filtered_max,
+    filtered_min,
+    filtered_sum,
     filtered_top_n,
+    filtered_unique_count,
+    filtered_value_counts,
+    group_and_average,
+    group_and_count,
+    group_and_sum,
+    monthly_sum,
+    percentage_of_total,
+    top_n,
+    value_counts,
 )
+
+
 class GeminiFilter(BaseModel):
-    column: str = Field(
-        description="Actual dataset column name."
-    )
+    column: str = Field(description="Actual dataset column name.")
 
     operator: str = Field(
         description=(

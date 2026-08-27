@@ -1,10 +1,14 @@
+import os
+from dotenv import find_dotenv, load_dotenv
+
+# Load environment variables FIRST before importing custom modules
+load_dotenv(find_dotenv())
+
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-from dotenv import load_dotenv
 
-load_dotenv()  # Loads environment variables from .env
-from analyst import analyze_data # pyright: ignore[reportAttributeAccessIssue]
+from analyst import analyze_data  # pyright: ignore[reportAttributeAccessIssue]
 from data_profile import profile_data
 
 st.set_page_config(
@@ -56,16 +60,16 @@ if uploaded_file is not None:
                             if isinstance(result, pd.DataFrame) and not result.empty:
                                 st.markdown("### Visualization")
                                 cols = result.columns.tolist()
-                                
+
                                 if len(cols) >= 2:
                                     x_col, y_col = cols[0], cols[1]
-                                    
+
                                     # Choose chart type based on column semantics
                                     if x_col.lower() in ["month", "date"]:
                                         fig = px.line(result, x=x_col, y=y_col, title=f"{y_col} over {x_col}", markers=True)
                                     else:
                                         fig = px.bar(result, x=x_col, y=y_col, title=f"{y_col} by {x_col}", text_auto=True)
-                                        
+
                                     st.plotly_chart(fig, use_container_width=True)
 
                             with st.expander("Show Execution Details & Plan"):
