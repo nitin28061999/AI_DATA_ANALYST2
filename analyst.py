@@ -7,6 +7,13 @@ load_dotenv()  # Loads environment variables from .env
 import contextlib
 import json
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access variable
+api_key = os.getenv("API_KEY")
 import re
 from typing import Any, Dict, List, Optional, Union
 
