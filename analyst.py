@@ -1,7 +1,9 @@
 # analyst.py
 
 from __future__ import annotations
+from dotenv import load_dotenv
 
+load_dotenv()  # Loads environment variables from .env
 import contextlib
 import json
 import os

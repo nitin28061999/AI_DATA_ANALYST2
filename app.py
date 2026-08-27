@@ -1,7 +1,9 @@
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from dotenv import load_dotenv
 
+load_dotenv()  # Loads environment variables from .env
 from analyst import analyze_data # pyright: ignore[reportAttributeAccessIssue]
 from data_profile import profile_data
 
