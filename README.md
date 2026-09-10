@@ -1,10 +1,14 @@
 # AI Data Analyst
 
-A Streamlit app that lets you upload a CSV and ask questions about it in plain
-English. Gemini plans which analysis to run (sum, average, group-by, filter,
-top-N, etc.); Python (pandas) is the only thing that ever touches the actual
-numbers, so the AI can't "hallucinate" a result — it can only choose and
-explain a calculation that real code executed.
+[![Python](https://img.shields.io/badge/python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/streamlit-app-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![Gemini](https://img.shields.io/badge/Google_Gemini-8E75B2?style=flat-square&logo=googlegemini&logoColor=white)](https://aistudio.google.com/)
+[![Tests](https://img.shields.io/badge/tests-186_passing-brightgreen?style=flat-square)](#running-tests)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
+
+**[Try the live demo →](https://aidataanalyst2-rfymfhdtfhdn4jvcsknuq2.streamlit.app/)**
+
+A Streamlit app that lets you upload a CSV and ask questions about it in plain English. Gemini plans which analysis to run (sum, average, group-by, filter, top-N, etc.); Python (pandas) is the only thing that ever touches the actual numbers, so the AI can't "hallucinate" a result — it can only choose and explain a calculation that real code executed.
 
 ```
 User question
@@ -14,6 +18,14 @@ User question
       -> Gemini explains the real result in plain English
       -> Answer + table/chart shown in the UI
 ```
+
+## Example
+
+**You upload:** a sales CSV with columns `city`, `product`, `revenue`, `units_sold`
+
+**You ask:** *"top 5 products by units sold"*
+
+**It returns:** a ranked table and bar chart of the actual top 5 products from your data — computed by pandas, not guessed by the LLM — plus a plain-English summary and an expandable view of the exact execution plan Gemini chose.
 
 ## Setup
 
@@ -84,3 +96,11 @@ pytest -q
 
 No API key is required to run the tests — Gemini calls are mocked/faked
 throughout the suite.
+
+## Relationship to other versions
+
+This is the current, actively maintained version of the AI Data Analyst project — rebuilt around a plan → validate → execute pipeline specifically so results are grounded in real pandas computation rather than LLM-generated numbers. An earlier LangChain-based tool-calling version, [DataMind-AI](https://github.com/infosys-gpt-2026/DataMind-AI), explored a different architecture (multi-tool agent with conversation memory) and is kept as a separate reference implementation.
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
