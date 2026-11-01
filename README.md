@@ -6,7 +6,7 @@
 [![Tests](https://img.shields.io/badge/tests-186_passing-brightgreen?style=flat-square)](#running-tests)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
 
-**[Try the live demo →](https://aidataanalyst2-rfymfhdtfhdn4jvcsknuq2.streamlit.app/)**
+**[Try the live demo →](https://aidataanalyst-oyxtdcjvw7yapphtefewbbq.streamlit.app/)**
 
 A Streamlit app that lets you upload a CSV and ask questions about it in plain English. Gemini plans which analysis to run (sum, average, group-by, filter, top-N, etc.); Python (pandas) is the only thing that ever touches the actual numbers, so the AI can't "hallucinate" a result — it can only choose and explain a calculation that real code executed.
 
